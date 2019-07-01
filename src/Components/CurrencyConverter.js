@@ -7,6 +7,22 @@ const withCurrency = (BaseComponent) => {
             selectedCurrency: 'Select Currency',
             amount: 0
         }
+        handleAmountIncrease = () => {
+            this.setState((prevState)=> {
+                return {amount: (prevState.amount += 1)}
+            })
+        }
+        handleAmountDecrease = () => {
+            this.setState((prevState)=> {
+                return { amount: (prevState.amount -= 1)}
+            })
+        }
+        handleOptionSelect = (e) => {
+            this.setState(()=> {
+                return {selectedCurrency: e.target.value,
+                        currencyChosen: e.target.value === 'Select Currency' ? false : true}
+            })
+        }
         render() {
             const currencyData = [
                 { name: 'Japanese Yen', symbol: '¥', rate: 113.6, id: 0 },
