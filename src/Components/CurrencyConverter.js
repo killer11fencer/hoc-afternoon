@@ -16,9 +16,20 @@ const withCurrency = (BaseComponent) => (
                 { name: 'Swiss Franc', symbol: 'Fr.', rate: 1.01 }
             ]
             let currencyOptions = currencyData.map((currency,id)=>{
-                return <option value={currency.rate} key={id}>{currency.name}</option>
+                return <option value={id} key={id}>{currency.name}</option>
             })
-            return ()
+            return (<div>
+                <select>
+                    <option value='Select Currency'>Select Currency</option>
+                    {currencyOptions}
+                </select>
+                <div>
+                    <button className='add'>+</button>
+                    <button className='minus'>-</button>
+                    <BaseComponent currency={this.state.selectedCurrency} amount={this.state.amount}/>
+
+                </div>
+            </div>)
         }
     }
 )
